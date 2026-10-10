@@ -81,33 +81,33 @@ Deferred until the one-room Linux session has been validated.
 | WATCH-01 | Existing | Complete |
 | WATCH-02 | Existing | Complete |
 | WATCH-03 | Existing | Complete |
-| WATCH-04 | Pending | Pending |
-| HOST-01 | Pending | Pending |
-| HOST-02 | Pending | Pending |
-| HOST-03 | Pending | Pending |
-| HOST-04 | Pending | Pending |
-| BROW-01 | Pending | Pending |
-| BROW-02 | Pending | Pending |
-| BROW-03 | Pending | Pending |
-| BROW-04 | Pending | Pending |
-| BROW-05 | Pending | Pending |
-| BROW-06 | Pending | Pending |
-| BROW-07 | Pending | Pending |
-| INPUT-01 | Pending | Pending |
-| INPUT-02 | Pending | Pending |
-| INPUT-03 | Pending | Pending |
-| SAFE-01 | Pending | Pending |
-| SAFE-02 | Pending | Pending |
-| SAFE-03 | Pending | Pending |
-| SAFE-04 | Pending | Pending |
-| TEST-01 | Pending | Pending |
-| TEST-02 | Pending | Pending |
-| TEST-03 | Pending | Pending |
+| WATCH-04 | Phase 1 | Pending |
+| HOST-01 | Phase 1 | Pending |
+| HOST-02 | Phase 1 | Pending |
+| HOST-03 | Phase 2 | Pending |
+| HOST-04 | Phase 2 | Pending |
+| BROW-01 | Phase 1 | Pending |
+| BROW-02 | Phase 1 | Pending |
+| BROW-03 | Phase 1 | Pending |
+| BROW-04 | Phase 1 | Pending |
+| BROW-05 | Phase 1 | Pending |
+| BROW-06 | Phase 1 | Pending |
+| BROW-07 | Phase 1 | Pending |
+| INPUT-01 | Phase 2 | Pending |
+| INPUT-02 | Phase 2 | Pending |
+| INPUT-03 | Phase 2 | Pending |
+| SAFE-01 | Phase 1 | Pending |
+| SAFE-02 | Phase 1 | Pending |
+| SAFE-03 | Phase 1 | Pending |
+| SAFE-04 | Phase 2 | Pending |
+| TEST-01 | Phase 2 | Pending |
+| TEST-02 | Phase 2 | Pending |
+| TEST-03 | Phase 2 | Pending |
 
 **Coverage:**
-- v1 requirements: 22 total (3 existing/complete, 19 active)
-- Mapped to phases: 0
-- Unmapped: 19
+- v1 requirements: 25 total (3 existing/complete, 22 active)
+- Active requirements mapped to exactly one phase: 22
+- Unmapped or multiply mapped active requirements: 0
 
 ---
 *Requirements defined: 2026-10-10*
