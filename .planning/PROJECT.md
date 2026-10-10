@@ -20,12 +20,13 @@ Friends can join one self-hosted room and watch or browse together, with the sha
 
 ### Active
 
-- [ ] A room can share a full Chromium browser window hosted by the app server
-- [ ] Room members can see browser navigation and page changes in real time
-- [ ] The host can grant and revoke browser control for one guest at a time
-- [ ] Browser input is accepted only from the current controller or host
-- [ ] The initial browser session is limited to public pages and does not expose shared account sign-ins
-- [ ] A single self-hosted server can run one room for a small group without paid APIs or managed services
+- [ ] The host can explicitly start and stop one full Chromium window on a supported Linux host, and room members can view it
+- [ ] The host can navigate the shared browser to public pages; signed-in accounts and saved browser profiles are unsupported
+- [ ] A private host capability, distinct from the public room invite and display name, authorizes session lifecycle and later controller grants
+- [ ] The host can grant and revoke control to one guest at a time; the server rejects unauthorized and stale mouse/keyboard input
+- [ ] Browser processes, display, and capture resources are cleaned up predictably; existing video sync, chat, and calls continue working
+- [ ] The shared browser remains local/private until OS/process isolation and network egress restrictions are implemented and verified
+- [ ] Linux hosts can self-host one room for a few friends without paid APIs or managed services; macOS remains supported as a browser client/development environment
 
 ### Out of Scope
 
@@ -41,6 +42,8 @@ Friends can join one self-hosted room and watch or browse together, with the sha
 - The web client is React and TypeScript. The server is Node.js, Express, and Socket.IO. Current shared room data is in process memory.
 - The existing app already has synced direct-video playback, room chat, and a browser WebRTC mesh call. These behaviors should remain available as the shared-browser capability is introduced.
 - The selected shared-browser approach is to launch Chromium directly on the app server and expose its full browser window to the room. Guests view it and the host grants control to a single guest at a time.
+- The host is identified by a private server-validated capability, not by display name. The capability must be distinct from ordinary guest invites.
+- Linux is the initial browser-host target; macOS remains supported for development and browser clients.
 - This is a small-group, one-room-at-a-time target. The room's browser is not a secure boundary against hostile pages or untrusted users. Planning and implementation must explicitly handle browser sandboxing, network access, input authorization, and session cleanup before the session is exposed beyond trusted invitees.
 - The application currently has no automated test suite, authentication, persistent store, Git history, or deployment configuration. Git was initialized during project setup.
 
@@ -57,10 +60,12 @@ Friends can join one self-hosted room and watch or browse together, with the sha
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
 | Build a shared browser session before polishing existing watch-party features | The shared remote browser is the key capability that makes this more like Hyperbeam | — Pending |
-| Run Chromium directly on the app server for the first milestone | Keeps the initial deployment self-hosted and avoids a separate hosted browser service | — Pending |
+| Run Chromium directly on a Linux app server for the first milestone | Uses open-source virtual-display tooling and avoids a separate hosted browser service; macOS remains a client/dev environment | — Pending |
 | Show the full browser window, including browser chrome | This matches the requested shared-browser experience | — Pending |
+| Separate a private host capability from public room invites | The current app has no login system and display names are not trustworthy host identity | — Pending |
 | Let the host grant browser control to one guest at a time | Keeps remote input predictable and lets the host moderate control | — Pending |
 | Restrict the first browser milestone to public pages without shared sign-ins | Avoids exposing guest credentials and browser account data | — Pending |
+| Defer internet-facing browser sessions until process/network isolation is verified | Same-host Chromium without OS isolation and egress restrictions can reach private networks and host services | — Pending |
 | Target one room and a few friends | Keeps a no-cost self-hosted install achievable on modest infrastructure | — Pending |
 | Keep tools and infrastructure free/open-source; inference costs depend on provider choice | Avoids project-required service fees while keeping AI-provider charges explicit | — Pending |
 
@@ -82,4 +87,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-10-10 after project initialization*
+*Last updated: 2026-10-10 after shared-browser scope definition*
