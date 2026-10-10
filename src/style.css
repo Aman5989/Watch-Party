@@ -1,0 +1,143 @@
+:root {
+  font-family: "DM Sans", "Avenir Next", sans-serif;
+  color: #f5f4f1;
+  background: #0b0c0f;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-size: 14px;
+  font-feature-settings: "ss01" on;
+  --muted: #92939a;
+  --accent: #c2f26c;
+  --line: #24262b;
+}
+
+* { box-sizing: border-box; }
+body { min-width: 320px; min-height: 100vh; margin: 0; }
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.app-shell { max-width: 1280px; min-height: 100vh; margin: 0 auto; padding: 0 56px; display: flex; flex-direction: column; }
+.topbar { height: 82px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--line); }
+.brand { display: inline-flex; gap: 10px; align-items: center; color: #f6f5f0; font-family: Manrope, "Avenir Next", sans-serif; font-size: 16px; font-weight: 800; letter-spacing: -.6px; text-decoration: none; }
+.brand-mark { color: var(--accent); font-size: 25px; line-height: 1; }
+.topbar-right { display: flex; gap: 26px; align-items: center; }
+.connection { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font-size: 12px; }
+.status-dot { display: inline-block; width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: #74767c; }
+.is-connected .status-dot, .player-label .status-dot, .footer-right .status-dot { background: var(--accent); box-shadow: 0 0 10px #c2f26c55; }
+.invite-button { display: flex; align-items: center; gap: 8px; padding: 10px 14px; color: #eae9e5; background: #17191d; border: 1px solid #303238; border-radius: 8px; font-size: 12px; font-weight: 600; transition: background .2s, border-color .2s; }
+.invite-button:hover { background: #202228; border-color: #55585f; }
+.invite-button span { color: var(--accent); font-size: 16px; }
+
+.room-heading { display: flex; align-items: end; justify-content: space-between; padding: 48px 0 32px; gap: 20px; }
+.eyebrow, .video-form label { color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: 1.8px; }
+h1 { margin: 12px 0 8px; font-family: Manrope, "Avenir Next", sans-serif; font-size: clamp(26px, 3.2vw, 39px); line-height: 1.17; letter-spacing: -1.8px; font-weight: 700; }
+h1 span { color: var(--accent); }
+.room-heading p { margin: 0; color: var(--muted); font-size: 13px; }
+.room-card { display: flex; align-items: center; gap: 13px; padding: 11px 14px; background: #121418; border: 1px solid var(--line); border-radius: 10px; }
+.room-card strong { display: block; font-size: 11px; font-weight: 600; }
+.room-card small { display: block; margin-top: 4px; color: #85878e; font-size: 9px; }
+.avatar-stack { display: flex; padding-left: 3px; }
+.avatar { display: grid; place-items: center; width: 27px; height: 27px; margin-left: -3px; border: 2px solid #121418; border-radius: 50%; color: #121418; font-size: 10px; font-weight: 700; }
+.avatar-one { background: #c2f26c; }
+.avatar-two { color: #f4dbbd; background: #895a5e; }
+.room-divider { height: 27px; width: 1px; margin: 0 2px; background: #303238; }
+.room-card .room-code { color: #e5e5e2; font-family: monospace; font-size: 12px; letter-spacing: 1px; }
+
+.room-content { display: grid; grid-template-columns: minmax(0, 1fr) 290px; align-items: stretch; gap: 22px; }
+.player-section { width: 100%; min-width: 0; }
+.player-frame { position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 16 / 8.5; overflow: hidden; background: #101114; border: 1px solid #27292e; border-radius: 13px; box-shadow: 0 28px 80px #0005; }
+.player-frame video { display: block; width: 100%; height: 100%; background: #050505; object-fit: contain; }
+.player-label { position: absolute; top: 17px; left: 18px; display: inline-flex; align-items: center; gap: 7px; padding: 7px 10px; color: #e3e4e0; background: #0b0c0fc7; border: 1px solid #ffffff1b; border-radius: 5px; font-size: 8px; font-weight: 700; letter-spacing: 1.2px; pointer-events: none; }
+.player-label .status-dot { width: 6px; height: 6px; }
+.empty-player { display: flex; align-items: center; flex-direction: column; gap: 8px; color: var(--muted); text-align: center; }
+.empty-player strong { margin-top: 9px; color: #e7e7e4; font-family: Manrope, "Avenir Next", sans-serif; font-size: 15px; font-weight: 600; }
+.empty-player > span { font-size: 11px; }
+.play-orb { display: grid; place-items: center; width: 54px; height: 54px; color: var(--accent); background: #c2f26c12; border: 1px solid #c2f26c4d; border-radius: 50%; }
+.play-orb span { margin-left: 3px; font-size: 17px; }
+
+.video-form { max-width: 740px; margin: 27px auto 0; }
+.video-form label { display: block; margin-bottom: 9px; color: #85878e; font-size: 8px; letter-spacing: 1.4px; }
+.input-row { display: flex; align-items: center; gap: 11px; min-height: 49px; padding: 5px 6px 5px 14px; background: #14161a; border: 1px solid #2e3036; border-radius: 8px; transition: border-color .15s; }
+.input-row:focus-within { border-color: #7d9d4c; }
+.link-icon { color: #8c8e94; font-size: 17px; }
+.input-row input { min-width: 0; flex: 1; color: #f2f2ef; background: transparent; border: 0; outline: 0; font-size: 12px; }
+.input-row input::placeholder { color: #73757c; }
+.input-row button { display: inline-flex; align-items: center; gap: 13px; min-height: 36px; padding: 0 14px; color: #14190c; background: var(--accent); border: 0; border-radius: 6px; font-size: 11px; font-weight: 700; transition: background .15s; }
+.input-row button:hover { background: #d1ff7c; }
+.input-row button span { font-size: 15px; }
+.form-note { margin: 9px 0 0; color: #777980; font-size: 10px; }
+.message { margin: 8px 0 0; color: var(--accent); font-size: 11px; }
+
+.call-section { margin-top: 25px; padding: 18px; background: #111317; border: 1px solid var(--line); border-radius: 10px; }
+.call-heading, .chat-header { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.panel-kicker { color: #85878e; font-size: 8px; font-weight: 700; letter-spacing: 1.5px; }
+.call-heading h2, .chat-header h2 { margin: 5px 0 0; font-family: Manrope, "Avenir Next", sans-serif; font-size: 15px; letter-spacing: -.3px; }
+.call-button { display: inline-flex; align-items: center; gap: 8px; padding: 9px 13px; color: #15190f; background: var(--accent); border: 0; border-radius: 6px; font-size: 10px; font-weight: 700; }
+.call-button:hover { background: #d1ff7c; }
+.call-button span { font-size: 14px; }
+.call-button-end { color: #fff; background: #632e32; }
+.call-button-end:hover { background: #7e373e; }
+.call-hint { margin: 15px 0 0; color: #85878e; font-size: 10px; }
+.call-error { margin: 12px 0 0; color: #ff9e9e; font-size: 10px; }
+.video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 9px; margin-top: 14px; }
+.video-tile { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #08090b; border: 1px solid #2e3036; border-radius: 7px; }
+.video-tile video { width: 100%; height: 100%; object-fit: cover; }
+.video-tile span { position: absolute; right: 6px; bottom: 6px; left: 6px; overflow: hidden; padding: 5px 7px; color: #f3f3f1; background: #08090bc9; border-radius: 4px; font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+
+.chat-panel { display: flex; min-height: 565px; flex-direction: column; overflow: hidden; background: #111317; border: 1px solid var(--line); border-radius: 10px; }
+.chat-header { min-height: 69px; padding: 0 16px; border-bottom: 1px solid var(--line); }
+.chat-count { padding: 5px 8px; color: #acadb2; background: #1b1d22; border-radius: 20px; font-size: 9px; }
+.name-form { padding: 13px 15px; border-bottom: 1px solid var(--line); }
+.name-form label { display: block; margin-bottom: 6px; color: #85878e; font-size: 8px; font-weight: 700; letter-spacing: 1.2px; }
+.name-form > div { display: flex; gap: 6px; }
+.name-form input { width: 100%; min-width: 0; padding: 7px 9px; color: #e9e9e6; background: #17191d; border: 1px solid #2e3036; border-radius: 5px; outline: none; font-size: 10px; }
+.name-form input:focus { border-color: #7d9d4c; }
+.name-form button { width: 30px; flex: 0 0 auto; color: var(--accent); background: #1b1d22; border: 1px solid #303238; border-radius: 5px; }
+.chat-messages { display: flex; flex: 1; flex-direction: column; gap: 14px; overflow-y: auto; padding: 15px; }
+.chat-empty { display: flex; flex: 1; align-items: center; justify-content: center; flex-direction: column; min-height: 150px; color: #85878e; text-align: center; }
+.chat-empty > span { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 9px; color: var(--accent); background: #c2f26c12; border-radius: 50%; font-size: 17px; }
+.chat-empty strong { color: #e1e1dd; font-size: 11px; font-weight: 600; }
+.chat-empty p { margin: 5px 0; font-size: 9px; }
+.chat-message { max-width: 100%; }
+.chat-message-meta { display: flex; align-items: baseline; gap: 8px; }
+.chat-message-meta strong { color: #e5e6e2; font-size: 10px; font-weight: 600; }
+.chat-message-meta time { color: #777980; font-size: 8px; }
+.chat-message p { margin: 5px 0 0; color: #babcbe; font-size: 10px; line-height: 1.5; overflow-wrap: anywhere; }
+.chat-form { display: flex; gap: 7px; padding: 11px; border-top: 1px solid var(--line); }
+.chat-form input { min-width: 0; flex: 1; padding: 9px; color: #efefec; background: #181a1f; border: 1px solid #303238; border-radius: 6px; outline: none; font-size: 10px; }
+.chat-form input:focus { border-color: #7d9d4c; }
+.chat-form input::placeholder { color: #777980; }
+.chat-form button { width: 33px; flex: 0 0 auto; color: #15190f; background: var(--accent); border: 0; border-radius: 6px; font-size: 16px; font-weight: 700; }
+.chat-form button:disabled { cursor: not-allowed; opacity: .4; }
+
+.footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding: 27px 0; color: #777980; border-top: 1px solid var(--line); font-size: 10px; }
+.footer-right { display: inline-flex; align-items: center; gap: 7px; }
+.footer-right .status-dot { width: 6px; height: 6px; }
+
+@media (max-width: 700px) {
+  .app-shell { padding: 0 20px; }
+  .topbar { height: 68px; }
+  .topbar-right { gap: 12px; }
+  .connection { font-size: 0; }
+  .connection .status-dot { width: 8px; height: 8px; }
+  .invite-button { padding: 9px 10px; }
+  .room-heading { align-items: start; flex-direction: column; padding: 34px 0 22px; }
+  h1 { letter-spacing: -1px; }
+  .room-card { align-self: stretch; }
+  .room-content { grid-template-columns: minmax(0, 1fr); }
+  .chat-panel { min-height: 420px; max-height: 550px; }
+  .player-frame { aspect-ratio: 16 / 10; border-radius: 9px; }
+  .input-row { gap: 8px; padding-left: 10px; }
+  .input-row button { gap: 7px; padding: 0 10px; font-size: 10px; }
+  .input-row input { font-size: 11px; }
+  .footer { align-items: start; flex-direction: column; gap: 11px; }
+}
+
+@media (min-width: 701px) and (max-width: 1000px) {
+  .app-shell { padding: 0 28px; }
+  .room-content { grid-template-columns: minmax(0, 1fr) 250px; gap: 14px; }
+}
